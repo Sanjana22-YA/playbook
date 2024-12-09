@@ -1,0 +1,25 @@
+---
+- name: Install Git and Pull Source Code
+  hosts: dev
+  user: ansible
+  become: yes
+  connection: ssh
+
+  tasks:
+  - name: Install Git
+    yum:
+      name: git
+      state: present
+
+  - name: Clone Repository
+    git:
+      repo: https://github.com/Sanjana22-YA/task.git
+      dest: /home/ansible/pull/file.txt
+      force: yes
+
+  - name: Pull Latest Changes
+    git:
+      repo: https://github.com/Sanjana22-YA/task.git
+      dest: /home/ansible/pull/file.txt
+      force: yes
+      update: yes
